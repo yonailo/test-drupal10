@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    theme:
+      - themetest
+id: themetest_medium
+label: 'Themetest Medium'
+locked: false
+pattern: 'j  F,  Y'

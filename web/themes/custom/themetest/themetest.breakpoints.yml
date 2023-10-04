@@ -1,46 +1,46 @@
-olivero.sm:
+themetest.sm:
   label: Small
   mediaQuery: 'all and (min-width: 500px)'
   weight: 0
   multipliers:
     - 1x
-olivero.md:
+themetest.md:
   label: Medium
   mediaQuery: 'all and (min-width: 700px)'
   weight: 1
   multipliers:
     - 1x
-olivero.lg:
+themetest.lg:
   label: Large
   mediaQuery: 'all and (min-width: 1000px)'
   weight: 2
   multipliers:
     - 1x
-olivero.xl:
+themetest.xl:
   label: X-Large
   mediaQuery: 'all and (min-width: 1300px)'
   weight: 3
   multipliers:
     - 1x
-olivero.nav-md:
+themetest.nav-md:
   label: Nav Medium
   mediaQuery: 'all and (min-width: 500px)'
   weight: 4
   multipliers:
     - 1x
-olivero.nav:
+themetest.nav:
   label: Nav
   mediaQuery: 'all and (min-width: 1200px)'
   weight: 5
   multipliers:
     - 1x
-olivero.grid-md:
+themetest.grid-md:
   label: Grid Medium
   mediaQuery: 'all and (min-width: 700px)'
   weight: 6
   multipliers:
     - 1x
-olivero.grid-max:
+themetest.grid-max:
   label: Grid Max
   mediaQuery: 'all and (min-width: 1440px)'
   weight: 7

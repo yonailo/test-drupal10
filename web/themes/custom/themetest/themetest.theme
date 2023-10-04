@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Functions to support theming in the Olivero theme.
+ * Functions to support theming in the themetest theme.
  */
 
-use Drupal\olivero\OliveroPreRender;
+use Drupal\themetest\ThemetestPreRender;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
@@ -24,12 +24,12 @@ function themetest_preprocess_html(&$variables) {
 
   // Convert custom hex to hsl so we can use the hue value
   $brand_color_hex = theme_get_setting('base_primary_color') ?? '#1b9ae4';
-  [$h, $s, $l] = _olivero_hex_to_hsl($brand_color_hex);
+  [$h, $s, $l] = _themetest_hex_to_hsl($brand_color_hex);
 
   $variables['html_attributes']->setAttribute('style', "--color--primary-hue:$h;--color--primary-saturation:$s%;--color--primary-lightness:$l");
 
-  // So fonts can be preloaded from base theme in the event Olivero is used as a subtheme.
-  $variables['olivero_path'] = \Drupal::request()->getBasePath() . '/' . \Drupal::service('extension.list.theme')->getPath('olivero');
+  // So fonts can be preloaded from base theme in the event themetest is used as a subtheme.
+  $variables['themetest_path'] = \Drupal::request()->getBasePath() . '/' . \Drupal::service('extension.list.theme')->getPath('themetest');
 
   $query_string = \Drupal::state()->get('system.css_js_query_string') ?: '0';
 
@@ -41,7 +41,7 @@ function themetest_preprocess_html(&$variables) {
     '#tag' => 'link',
     '#attributes' => [
       'rel' => 'stylesheet',
-      'href' => $variables['olivero_path'] . '/css/components/navigation/nav-primary-no-js.css?' . $query_string,
+      'href' => $variables['themetest_path'] . '/css/components/navigation/nav-primary-no-js.css?' . $query_string,
     ],
   ];
 }
@@ -87,8 +87,8 @@ function themetest_preprocess_maintenance_page(&$variables) {
     $variables['site_name'] = '';
   }
 
-  // Olivero has custom styling for the maintenance page.
-  $variables['#attached']['library'][] = 'olivero/maintenance-page';
+  // themetest has custom styling for the maintenance page.
+  $variables['#attached']['library'][] = 'themetest/maintenance-page';
 }
 
 /**
@@ -103,7 +103,7 @@ function themetest_preprocess_node(&$variables) {
 
   // Apply custom date formatter to "date" field.
   if (!empty($variables['date']) && !empty($variables['display_submitted']) && $variables['display_submitted'] === TRUE) {
-    $variables['date'] = \Drupal::service('date.formatter')->format($variables['node']->getCreatedTime(), 'olivero_medium');
+    $variables['date'] = \Drupal::service('date.formatter')->format($variables['node']->getCreatedTime(), 'themetest_medium');
   }
 
   // Pass layout variable to template if content type is article in full view
@@ -129,17 +129,17 @@ function themetest_preprocess_block(&$variables) {
       if ($variables['base_plugin_id'] === 'system_menu_block') {
         $variables['content']['#attributes']['region'] = $region;
         if ($region === 'sidebar') {
-          $variables['#attached']['library'][] = 'olivero/menu-sidebar';
+          $variables['#attached']['library'][] = 'themetest/menu-sidebar';
         }
       }
 
       if ($variables['base_plugin_id'] === 'search_form_block') {
         if ($region === 'primary_menu') {
-          $variables['#attached']['library'][] = 'olivero/search-narrow';
+          $variables['#attached']['library'][] = 'themetest/search-narrow';
           $variables['content']['actions']['submit']['#theme_wrappers'] = ['input__submit__header_search'];
         }
         elseif ($region === 'secondary_menu') {
-          $variables['#attached']['library'][] = 'olivero/search-wide';
+          $variables['#attached']['library'][] = 'themetest/search-wide';
           $variables['content']['actions']['submit']['#theme_wrappers'] = ['input__submit__header_search'];
         }
       }
@@ -547,11 +547,11 @@ function themetest_preprocess_field__comment(&$variables) {
  */
 function themetest_element_info_alter(&$info) {
   if (array_key_exists('text_format', $info)) {
-    $info['text_format']['#pre_render'][] = [OliveroPreRender::class, 'textFormat'];
+    $info['text_format']['#pre_render'][] = [ThemetestPreRender::class, 'textFormat'];
   }
 
   if (isset($info['status_messages'])) {
-    $info['status_messages']['#pre_render'][] = [OliveroPreRender::class, 'messagePlaceholder'];
+    $info['status_messages']['#pre_render'][] = [ThemetestPreRender::class, 'messagePlaceholder'];
   }
 }
 
@@ -575,7 +575,7 @@ function themetest_preprocess_text_format_wrapper(&$variables) {
 function themetest_preprocess_search_result(&$variables) {
   // Apply custom date formatter to "date" field.
   if (!empty($variables['result']['date'])) {
-    $variables['info_date'] = \Drupal::service('date.formatter')->format($variables['result']['node']->getCreatedTime(), 'olivero_medium');
+    $variables['info_date'] = \Drupal::service('date.formatter')->format($variables['result']['node']->getCreatedTime(), 'themetest_medium');
   }
 }
 
@@ -633,7 +633,7 @@ function themetest_form_views_exposed_form_alter(&$form) {
  *
  * @internal
  */
-function _olivero_hex_to_hsl(string $hex_string) {
+function _themetest_hex_to_hsl(string $hex_string) {
   // Convert hexcode pairs to rgb values (0-255).
   $hex_val = trim($hex_string, '#');
   $r0 = hexdec($hex_val[0] . $hex_val[1]);

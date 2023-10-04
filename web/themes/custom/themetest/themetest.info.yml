@@ -1,9 +1,8 @@
 name: 'Theme de test'
 type: theme
 'base theme': false
-starterkit: true
 description: 'Custom theme generated from Olivero'
-'alt text': 'Screenshot of Olivero, Drupal front-end theme.'
+'alt text': 'Screenshot of Themetest, Drupal front-end theme.'
 package: Core
 version: VERSION
 libraries:
@@ -42,9 +41,9 @@ libraries-override:
       component:
         misc/vertical-tabs.css: css/components/vertical-tabs.css
   media/oembed.formatter: false
-  layout_builder/twocol_section: olivero/layout_builder_twocol_section
-  layout_builder/threecol_section: olivero/layout_builder_threecol_section
-  layout_builder/fourcol_section: olivero/layout_builder_fourcol_section
+  layout_builder/twocol_section: themetest/layout_builder_twocol_section
+  layout_builder/threecol_section: themetest/layout_builder_threecol_section
+  layout_builder/fourcol_section: themetest/layout_builder_fourcol_section
 libraries-extend:
   core/drupal.message:
     - themetest/drupal.message

@@ -1,8 +1,8 @@
 # Schema for the configuration files of the Olivero theme.
 
-olivero.settings:
+themetest.settings:
   type: theme_settings
-  label: 'olivero settings'
+  label: 'themetest settings'
   mapping:
     third_party_settings:
       type: mapping
