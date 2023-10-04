@@ -1,0 +1,72 @@
+name: 'Theme de test'
+type: theme
+'base theme': false
+starterkit: true
+description: 'Custom theme generated from Olivero'
+'alt text': 'Screenshot of Olivero, Drupal front-end theme.'
+package: Core
+version: VERSION
+libraries:
+  - themetest/global-styling
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  hero: 'Hero (full width)'
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  social: 'Social Bar'
+  content_above: 'Content Above'
+  content: Content
+  sidebar: Sidebar
+  content_below: 'Content Below'
+  footer_top: 'Footer Top'
+  footer_bottom: 'Footer Bottom'
+libraries-override:
+  system/admin:
+    css:
+      theme:
+        css/system.admin.css: false
+  system/base:
+    css:
+      component:
+        css/components/ajax-progress.module.css: css/components/ajax-progress.module.css
+        css/components/autocomplete-loading.module.css: css/components/autocomplete-loading.module.css
+  core/drupal.checkbox: false
+  core/drupal.dropbutton:
+    css:
+      component:
+        misc/dropbutton/dropbutton.css: css/components/dropbutton.css
+  core/drupal.vertical-tabs:
+    css:
+      component:
+        misc/vertical-tabs.css: css/components/vertical-tabs.css
+  media/oembed.formatter: false
+  layout_builder/twocol_section: olivero/layout_builder_twocol_section
+  layout_builder/threecol_section: olivero/layout_builder_threecol_section
+  layout_builder/fourcol_section: olivero/layout_builder_fourcol_section
+libraries-extend:
+  core/drupal.message:
+    - themetest/drupal.message
+  core/drupal.collapse:
+    - themetest/details
+  core/drupal.dialog:
+    - themetest/drupal.dialog
+  core/drupal.progress:
+    - themetest/progress
+  layout_discovery/onecol:
+    - themetest/layout_discovery_section
+  layout_discovery/twocol_bricks:
+    - themetest/layout_discovery_section
+  layout_discovery/twocol:
+    - themetest/layout_discovery_section
+  layout_discovery/threecol_25_50_25:
+    - themetest/layout_discovery_section
+  layout_discovery/threecol_33_34_33:
+    - themetest/layout_discovery_section
+  node/drupal.node.preview:
+    - themetest/drupal.node.preview
+  content_moderation/content_moderation:
+    - themetest/content_moderation
+core_version_requirement: ^10
+generator: 'olivero:10.1.4'

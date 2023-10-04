@@ -8,15 +8,22 @@ version: '3.2'
 services:
 
   drupal:
-    image: drupal:10-apache
     container_name: drupal10_app
-
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - 8080:80
     volumes:
+      # bind custom modules
       - type: bind
         source: ./web/modules/custom
         target: /var/www/html/modules/custom
+      # bind cutom themes
+      - type: bind
+        source: ./web/themes/custom
+        target: /var/www/html/themes/custom
+      # bind settings.php
       - type: bind
         source: ./web/sites/default/settings.php
         target: /var/www/html/sites/default/settings.php
@@ -34,6 +41,7 @@ services:
       MYSQL_USER: test
       MYSQL_PASSWORD: test
     volumes:
+      # This bind allows to import the local database into the continer
       - type: bind
         source: ./database
         target: /docker-entrypoint-initdb.d
