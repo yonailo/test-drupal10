@@ -28,6 +28,10 @@ services:
       - type: bind
         source: ./web/sites/default/settings.php
         target: /var/www/html/sites/default/settings.php
+      # bind files
+      - type: bind
+        source: ./web/sites/default/files
+        target: /var/www/html/sites/default/files
     restart: always
 
   mysql:

@@ -4,7 +4,10 @@ WORKDIR /opt/drupal
 
 # Adds SSH to be able to log with vscode and other
 # debian packages
-RUN apt-get update && apt-get install -y ssh vim less telnet build-essential ruby-full compass
+RUN apt-get update && apt-get install -y ssh vim less telnet build-essential ruby-full 
+
+# installs compass
+RUN gem install compass
 
 # Remove Apache2 error log because it is redirected to stderr
 RUN rm /var/log/apache2/error.log
