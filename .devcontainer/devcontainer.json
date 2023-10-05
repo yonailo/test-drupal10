@@ -1,0 +1,7 @@
+{
+    "name": "Test project",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "drupal",
+    "workspaceFolder": "/opt/drupal",
+    "shutdownAction": "stopCompose"
+  }

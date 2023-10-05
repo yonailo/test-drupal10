@@ -1,0 +1,7 @@
+test.list_articles:
+  path: '/articles/all'
+  defaults:
+    _controller: '\Drupal\test\Controller\ArticlesController::listAll'
+    _title: 'List all articles'
+  requirements:
+    _permission: 'access content'
