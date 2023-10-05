@@ -1,0 +1,21 @@
+.articles_all_wrapper {
+    article {
+        background-color: black;
+        padding: 20px;
+
+        p, h2, a {
+            color: white;
+        }
+
+        &:after {
+            position: absolute;
+            inset-block-end: 0;
+            width: var(--sp3);
+            height: 0;
+            content: "";
+            border-top: solid 10px var(--color--gray-95);
+        }
+    }
+}
+
+

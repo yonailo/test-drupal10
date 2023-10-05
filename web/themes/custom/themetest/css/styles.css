@@ -1,0 +1,20 @@
+/* line 2, ../sass/styles.scss */
+.articles_all_wrapper article {
+  background-color: black;
+  padding: 20px;
+}
+/* line 6, ../sass/styles.scss */
+.articles_all_wrapper article p, .articles_all_wrapper article h2, .articles_all_wrapper article a {
+  color: white;
+}
+/* line 10, ../sass/styles.scss */
+.articles_all_wrapper article:after {
+  position: absolute;
+  inset-block-end: 0;
+  width: var(--sp3);
+  height: 0;
+  content: "";
+  border-top: solid 10px var(--color--gray-95);
+}
+
+/*# sourceMappingURL=styles.css.map */
