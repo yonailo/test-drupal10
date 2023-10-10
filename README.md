@@ -44,17 +44,21 @@ to the docker "app" instance which holds all the project:
 (on my windows vscode) $> ssh docker
 ```
 
-There is this .ssh/config file on my windows host to facilitate vscode ssh setup:
+There is this ".ssh/config" file on my windows host to facilitate vscode ssh setup:
 
 ```
 WW930+a805442@DESKTOP-1DCHHE2 /cygdrive/c/Users/a805442 $ cat .ssh/config
-HostName localhost User vagrant Port 2222 Host docker
+HostName localhost 
+  User vagrant 
+  Port 2222 
+
+Host docker
   HostName 192.168.0.13
   User root
   Port 2323
 ```
 
-ànd this is the vagrant box .ssh/config:
+ànd this is the vagrant box ".ssh/config":
 
 ```
 vagrant@homestead:~$ cat .ssh/config
