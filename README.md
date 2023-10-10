@@ -33,3 +33,37 @@ Open a browser and go to http://localhost:8080/
 Note that the site might not work until the database 'test.sql' is fully imported
 on the MySQL container, so please wait a few seconds or retry if you receive an
 error.
+
+# LOCAL DEVELOPMENT ENVIRONMENT 
+
+My local dev is quite weird because I can not install docker on windows, so I have to launch a ssh tunnel to connect my vscode
+to the docker "app" instance which holds all the project:
+
+```
+(on vagrant box) $> ssh -L 192.168.0.13:2323:localhost:22 docker
+(on my windows vscode) $> ssh docker
+```
+
+There is this .ssh/config file on my windows host to facilitate vscode ssh setup:
+
+```
+WW930+a805442@DESKTOP-1DCHHE2 /cygdrive/c/Users/a805442 $ cat .ssh/config
+HostName localhost User vagrant Port 2222 Host docker
+  HostName 192.168.0.13
+  User root
+  Port 2323
+```
+
+ànd this is the vagrant box .ssh/config:
+
+```
+vagrant@homestead:~$ cat .ssh/config
+Host docker
+  HostName localhost
+  User root
+  Port 2222
+
+```
+
+My vagrant box has the port 2323 opened, besides the normal vagrant ssh port 2222.
+

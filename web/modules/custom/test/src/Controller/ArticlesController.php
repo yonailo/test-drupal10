@@ -7,21 +7,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ArticlesController extends ControllerBase {
 
+
     public function listAll() {
-        $query = $this->entityTypeManager()->getStorage('node')->getQuery();
-        $articlesIds = $query->condition('type', 'article')->accessCheck(TRUE)->execute();
-
-        $articles = $this->entityTypeManager()->getStorage('node')->loadMultiple($articlesIds);
-
-        $view_builder = $this->entityTypeManager()->getViewBuilder('node');
-        $items = [];
-        foreach($articles as $article) {
-            $items[] = $view_builder->view($article, 'teaser');
-        }
+        $output = <<<EOF
+This controller does nothing because we have created a block that will output the articles instead.<br/> 
+The block has been inserted into the <a href="/admin/structure/block">Block Layout</a> in the 'content' region.
+EOF;
 
         return [
-            '#theme' => 'item_list',
-            '#items' => $items,
+            '#type' => 'markup',
+            '#markup' => $output
         ];
     }
 }

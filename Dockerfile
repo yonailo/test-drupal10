@@ -4,7 +4,7 @@ WORKDIR /opt/drupal
 
 # Adds SSH to be able to log with vscode and other
 # debian packages
-RUN apt-get update && apt-get install -y ssh vim less telnet build-essential ruby-full 
+RUN apt-get update && apt-get install -y ssh vim less telnet build-essential ruby-full git
 
 # installs compass
 RUN gem install compass
